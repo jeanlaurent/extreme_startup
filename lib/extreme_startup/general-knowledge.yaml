@@ -6,8 +6,17 @@
   question: which city is the Eiffel tower in
   answer: Paris
 -
-  question: what colour is a banana
-  answer: yellow
--
   question: who played James Bond in the film Dr No
   answer: Sean Connery
+-
+  question: y'en a des ... 
+  answer: biens
+-
+  question: firstname of the uncontainable award of november 18th 
+  answer: Simon
+-
+  question: what is the name of the linux vm in Docker Desktop before linuxkit 
+  answer: moby
+-
+  question: yesterday, how many commits are checkin in docker/cli
+  answer: 5789
