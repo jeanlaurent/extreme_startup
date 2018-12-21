@@ -13,7 +13,7 @@
               %th{ :scope => "col" }Points
           %tbody{ :id => "scoreboard" }
           - leaderboard.each do |entry,index|
-            %tr
+            %tr{ :class => entry.score < 0 ? "text-danger" : "text-success" }
               %td
                 &= entry.playername
               %td

@@ -20,7 +20,7 @@
               %th{ :scope => "col" }Points awarded
           %tbody
             - log.each do |logline|
-              %tr
+              %tr{ :class => logline.points < 0 ? "text-danger" : "text-success" }
                 %th{ :scope => "row" } #{logline.id}
                 %td #{logline.result}
                 %td #{logline.points}

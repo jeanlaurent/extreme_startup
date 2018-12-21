@@ -31,12 +31,11 @@ $(document).ready(function() {
 
 	var ScoreBoard = function() {
 		this.updateWith = function (leaderboard) {
-			console.log('update');
 			var list = $('<tbody id="scoreboard"></tbody>');
 			for (var i=0; i < leaderboard.length; i += 1) {
 				var entry = leaderboard[i];
 				list.append(
-					$('<tr/>')
+					$('<tr class="' + (entry.score < 0 ? 'text-danger' : 'text-success') + '"/>')
 						.append($('<td>' + ( i + 1 ) + '</td>'))
 						.append($('<td>' + entry.playername + '</td>'))
 						.append($('<td>' + entry.score + '</td>')));
