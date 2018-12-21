@@ -1,17 +1,26 @@
 %html
   %head
+    = haml :head
     %title Extreme Startup - Leaderboard
     %link(rel="stylesheet" href="/css/style.css")
   %body
-    %a{ :href => '/players' }
-      I want to play!
-    %h1 Leaderboard
-    %ul
-      - leaderboard.each do |entry|
-        %li.player
-          %div{:class => ["ranking", "name"]}
-            &= entry.playername
-          %div{:class => ["ranking", "points"]} #{entry.score}
+    %div{ :class => "container" }
+      %div{ :class => "card" }
+        %table{ :class => "table" }
+          %thead
+            %tr
+              %th{ :scope => "col" }Player
+              %th{ :scope => "col" }Points
+          %tbody{ :id => "scoreboard" }
+          - leaderboard.each do |entry,index|
+            %tr
+              %td
+                &= entry.playername
+              %td
+                &= entry.score
+    %div{ :class => "container text-center" }
+      %a{ :class => "btn btn-primary", :href => '/players' }
+        I want to play!
 
     :javascript
       refresh = function() { window.location.reload(); };

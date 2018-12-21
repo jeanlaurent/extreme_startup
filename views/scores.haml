@@ -1,14 +1,22 @@
 %html
   %head
     %title Extreme Startup - Score Graph
-    %link(rel="stylesheet" href="/css/style.css")
+    = haml :head
     %script{:type => "text/javascript", :src  => "/js/smoothie.js"}
     %script{:type => "text/javascript", :src  => "/js/jquery-1.6.2.min.js"}
     %script{:type => "text/javascript", :src  => "/js/leaderboard.js"}
 
   %body
-    .left
-      %canvas{:id => "mycanvas", :width => 500, :height => 500 }
-    .right
-      %h1 Leader Board
-      %ul{:id => "scoreboard" }
+    %div{ :class => "container-fluid" }
+      %div{ :class => "row" }
+        %div{ :class => "col-sm" }
+          %canvas{:id => "mycanvas", :width => 500, :height => 500 }
+        %div{ :class => "col-sm" }
+          %div{ :class => "card" }
+            %table{ :class => "table" }
+              %thead
+                %tr
+                  %th{ :scope => "col" }Rank
+                  %th{ :scope => "col" }Player
+                  %th{ :scope => "col" }Points
+              %tbody{ :id => "scoreboard" }

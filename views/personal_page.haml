@@ -1,22 +1,26 @@
 %html
   %head
     %title Extreme Startup - #{name}
-    %link(rel="stylesheet" href="/css/style.css")
+    = haml :head
   %body
-    %h1
-      &= "Hello, #{name}!"
+    %div{ :class => "container" }
+      %div{ :class => "card" }
+        %div{ :class => "card-body" }
+          %h5{ :class => "card-title" }
+            &= "Coucou #{name}!"
+          %p
+            Your score is:
+            %span.score #{score}
 
-    %h2
-      Your score is:
-      %span.score #{score}
-
-    %a{ :href => "/withdraw/#{playerid}" }
-      Withdraw
-
-    %h2 Log:
-    %ul
-      - log.each do |logline|
-        %li
-          %div{:class => ["logline", "id", logline.result]} #{logline.id}
-          %div{:class => ["logline", "result", logline.result]} result: #{logline.result}
-          %div{:class => ["logline", "points", logline.result]} points awarded: #{logline.points}
+        %table{ :class => "table" }
+          %thead
+            %tr
+              %th{ :scope => "col" }ID
+              %th{ :scope => "col" }Result
+              %th{ :scope => "col" }Points awarded
+          %tbody
+            - log.each do |logline|
+              %tr
+                %th{ :scope => "row" } #{logline.id}
+                %td #{logline.result}
+                %td #{logline.points}

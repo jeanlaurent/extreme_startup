@@ -1,9 +1,11 @@
 %html
   %head
+    = haml :head
   %body
-    %h1 Player added - Thanks
-  
-    %p
-      You can view your personal log page by 
-      %a{ :href => "/players/#{playerid}" } following this link
-      don't close that tab!
+    %div{ :class => "container" }
+      %div{ :class => "card" }
+        %div{ :class => "card-body" }
+          %h5{ :class => "card-title" } Player added - Thanks
+          %p You can view your personal log page
+          %p{ :class => "text-danger" } Don't close that tab!
+          %a{ :class => "btn btn-primary", :href => "/players/#{playerid}" } SHOW ME!

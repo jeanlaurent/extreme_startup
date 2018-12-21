@@ -20,3 +20,5 @@ li { display: block; }
 .ranking {margin:2px; padding:3px; display:inline-block; background-color:#eed5b7}
 .ranking.name {width:200}
 .ranking.points {width:200}
+
+body { background-color: #FAFAFA; padding-top: 10px }

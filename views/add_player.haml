@@ -1,14 +1,15 @@
 %html
   %head
+    = haml :head
   %body
-    %h1 Add a new player
-  
-    %form{:action => "/players", :method => "post"}
-      %label{ :for => "name" }Name:
-      %input{ :type => "text", :id => "name", :name => "name" }
-      
-      %label{ :for => "name" }URL:
-      %input{ :type => "text", :id => "url", :name => "url", :placeholder => "http://..."}
-      
-      %input{ :type => "submit", :value => "Submit"}
-
+    %div{ :class => "container" }
+      %form{ :class => "card", :action => "/players", :method => "post" }
+        %div{ :class => "card-body" }
+          %h5{ :class => "card-title" } Add a new player
+          %div{ :class => "form-group" }
+            %label{ :for => "name" }Name:
+            %input{ :type => "text", :class => "form-control", :id => "name", :name => "name", :placeholder => "Hervé Tété" }
+          %div{ :class => "form-group" }
+            %label{ :for => "name" }URL:
+            %input{ :type => "text", :class => "form-control", :id => "url", :name => "url", :placeholder => "http://..." }
+          %input{ :type => "submit", :class => "btn btn-primary", :value => "Submit"}

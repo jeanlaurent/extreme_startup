@@ -29,38 +29,37 @@ $(document).ready(function() {
 		}
 	};  
 
-	var ScoreBoard = function(div) {
+	var ScoreBoard = function() {
 		this.updateWith = function (leaderboard) {
-			var list = $('<ul id="scoreboard"></ul>');            
+			console.log('update');
+			var list = $('<tbody id="scoreboard"></tbody>');
 			for (var i=0; i < leaderboard.length; i += 1) {
 				var entry = leaderboard[i];
 				list.append(
-					$('<div/>').append(
-						$('<li/>', {class: "player"})
-						.append($('<div>' + entry.playername + '</div>').addClass("ranking name").css("background-color", colourTable[entry.playerid]))
-						.append($('<div>' + entry.score + '</div>').addClass("ranking points").css("background-color", colourTable[entry.playerid]))
-						.append($('<a>Withdraw</a>').attr("href", "/withdraw/" + entry.playerid))));
-				}
-				$("#scoreboard").replaceWith(list); 
+					$('<tr/>')
+						.append($('<td>' + ( i + 1 ) + '</td>'))
+						.append($('<td>' + entry.playername + '</td>'))
+						.append($('<td>' + entry.score + '</td>')));
 			}
+			$("#scoreboard").replaceWith(list); 
 		};
-
-		var graph = new Graph($('#mycanvas')[0]);  // get DOM object from jQuery object
-		var scoreboard = new ScoreBoard($('#scoreboard'));
-
-		setInterval(function() {
-			$.ajax({
-				url: '/scores',
-				success: function( data ) {
-					var leaderboard = JSON.parse(data);
-					if (leaderboard.inplay) {
-						graph.updateWith(leaderboard.entries);
-						scoreboard.updateWith(leaderboard.entries);
-					} else {
-						graph.pause();
-					}
-				}
-			});
-		}, 1000);
 	}
-);
+
+	var graph = new Graph($('#mycanvas')[0]);  // get DOM object from jQuery object
+	var scoreboard = new ScoreBoard();
+	
+	setInterval(function() {
+		$.ajax({
+			url: '/scores',
+			success: function( data ) {
+				var leaderboard = JSON.parse(data);
+				if (leaderboard.inplay) {
+					graph.updateWith(leaderboard.entries);
+					scoreboard.updateWith(leaderboard.entries);
+				} else {
+					graph.pause();
+				}
+			}
+		});
+	}, 1000);
+});
